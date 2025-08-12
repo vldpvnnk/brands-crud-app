@@ -1,0 +1,10 @@
+services:
+  backend:
+    build:
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ./backend/.env.development
+
+  frontend:
+    build:
+      dockerfile: Dockerfile.dev

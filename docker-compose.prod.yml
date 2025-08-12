@@ -1,0 +1,10 @@
+services:
+  backend:
+    build:
+      dockerfile: Dockerfile.prod
+    env_file:
+      - ./backend/.env.production
+
+  frontend:
+    build:
+      dockerfile: Dockerfile.prod
