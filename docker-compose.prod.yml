@@ -4,7 +4,14 @@ services:
       dockerfile: Dockerfile.prod
     env_file:
       - ./backend/.env.production
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+ 
 
   frontend:
     build:
       dockerfile: Dockerfile.prod
+    ports:
+      - "8080:80"       
+
+

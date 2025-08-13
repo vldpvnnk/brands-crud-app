@@ -7,10 +7,7 @@ services:
     ports:
       - '5000:5000'
     depends_on:
-      - db
-    volumes:
-      - ./backend:/app
-      - /app/node_modules      
+      - db      
     networks:
       - custom_net
 
@@ -25,8 +22,13 @@ services:
       - '5432:5432'
     volumes:
       - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     networks:
-      - custom_net
+      - custom_net      
 
   frontend:
     build:
@@ -36,8 +38,6 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules      
-    # environment:
-    #   - VITE_API_URL=http://backend:5000
     depends_on:
       - backend
     networks:
