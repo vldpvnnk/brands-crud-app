@@ -28,21 +28,50 @@ export default function Brands() {
   };
 
   const edit = (b: Brand) => { setEditing(b.id); setName(b.name); setDesc(b.description || ''); };
-  const del = async (id: string) => { if (!confirm('Delete?')) return; await api.delete(`/brands/${id}`); load(); };
+  const del = async (id: string) => { 
+    if (!confirm('Delete?')) 
+      return; 
+    await api.delete(`/brands/${id}`); load(); 
+  };
 
   return (
     <div style={{ maxWidth: 800, margin: 20 }}>
       <h2>Brands</h2>
       <form onSubmit={submit} style={{ marginBottom: 20 }}>
-        <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-        <input placeholder="Description" value={desc} onChange={(e) => setDesc(e.target.value)} />
-        <button type="submit">{editing ? 'Save' : 'Create'}</button>
-        {editing && <button type="button" onClick={() => { setEditing(null); setName(''); setDesc(''); }}>Cancel</button>}
+        <input 
+          placeholder="Name" 
+          value={name} 
+          onChange={(e) => setName(e.target.value)} 
+          required 
+        />
+        <input 
+          placeholder="Description" 
+          value={desc} 
+          onChange={(e) => setDesc(e.target.value)} 
+        />
+        <button 
+          type="submit">{editing ? 'Save' : 'Create'}
+        </button>
+        {editing && 
+          <button 
+            type="button" 
+            onClick={() => { setEditing(null); setName(''); setDesc(''); }}
+          >
+            Cancel
+          </button>}
       </form>
 
-      <table border={1} cellPadding={8} style={{ width: '100%' }}>
+      <table 
+        border={1} 
+        cellPadding={8} 
+        style={{ width: '100%' }}
+      >
         <thead>
-          <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
         </thead>
         <tbody>
           {items.map(b => (
