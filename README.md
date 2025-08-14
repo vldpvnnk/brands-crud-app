@@ -92,3 +92,9 @@ POST /brands — создать бренд (JWT)
 PUT /brands/:id — обновить бренд (JWT)
 
 DELETE /brands/:id — удалить бренд (JWT)
+
+## Проект, по ссылке
+
+- Frontend: https://brands-crud-app-pink.vercel.app
+- Backend: https://brands-crud-app-bjjt.onrender.com
+- Swagger: https://brands-crud-app-bjjt.onrender.com/docs
